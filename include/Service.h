@@ -19,6 +19,7 @@ public:
   const char* getName(void);
 
 protected:
+  virtual void onStart(void) = 0;
   virtual void onEvent(EventType event) = 0;
 
 private:

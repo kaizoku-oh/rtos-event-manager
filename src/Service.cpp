@@ -39,6 +39,7 @@ void Service::task(void* params) {
   Service* self = static_cast<Service*>(params);
   EventType event;
 
+  self->onStart();
   ESP_LOGD(TAG, "%s is waiting for an event...", self->taskName);
   while (true) {
     if (xQueueReceive(self->queueHandle, &event, portMAX_DELAY)) {
