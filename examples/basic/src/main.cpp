@@ -30,8 +30,8 @@ extern "C" void app_main() {
   serviceB.run();
 
   ESP_LOGI(TAG, "Publishing events...");
-  eventManager.publish(EventType::EVENT_TIME_AVAILABLE);
-  eventManager.publish(EventType::EVENT_WIFI_CONNECTED);
+  eventManager.publish(Event::TIME_AVAILABLE);
+  eventManager.publish(Event::WIFI_CONNECTED);
 
   while (secondsUntilExit--) {
     ESP_LOGI(TAG, "Running...");
@@ -42,7 +42,7 @@ extern "C" void app_main() {
 }
 
 static void IRAM_ATTR onButtonPress(void* arg) {
-  EventManager::getInstance().publish(EventType::EVENT_BUTTON_PRESSED);
+  EventManager::getInstance().publish(Event::BUTTON_PRESSED);
 }
 
 static void setupButton(gpio_num_t gpio, gpio_isr_t callback) {

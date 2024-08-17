@@ -8,7 +8,7 @@ public:
   ServiceB();
   ~ServiceB();
 protected:
-  void onEvent(EventType event) override;
+  void onEvent(Event event) override;
 };
 
 #endif // SERVICE_B_H

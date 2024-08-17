@@ -16,7 +16,7 @@ typedef struct {
   // This must be first
   struct smf_ctx ctx;
   // Variable to hold the event message
-  EventType event;
+  Event event;
   // Other state specific data add here...
 } state_machine_t;
 
@@ -25,12 +25,12 @@ public:
   ServiceA();
   ~ServiceA();
 protected:
-  void onEvent(EventType event) override;
+  void onEvent(Event event) override;
 private:
   static void state0EventHandler(void* machine);
   static void state1EventHandler(void* machine);
   static const struct smf_state states[STATE_MAX];
-  static const EventType events[static_cast<int>(EventType::MAX_EVENTS)];
+  static const Event events[static_cast<int>(Event::MAX_EVENTS)];
   state_machine_t stateMachine;
 };
 

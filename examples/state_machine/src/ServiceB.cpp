@@ -5,9 +5,9 @@
 
 #define TAG "[ServiceB]"
 
-static const EventType events[] = {
-  EventType::EVENT_BUTTON_PRESSED,
-  EventType::EVENT_WIFI_CONNECTED,
+static const Event events[] = {
+  Event::BUTTON_PRESSED,
+  Event::WIFI_CONNECTED,
 };
 
 ServiceB::ServiceB() : Service("ServiceB", tskIDLE_PRIORITY + 1, 2048, 8) {
@@ -15,13 +15,13 @@ ServiceB::ServiceB() : Service("ServiceB", tskIDLE_PRIORITY + 1, 2048, 8) {
   ESP_LOGD(TAG, "ServiceB object is created");
 }
 
-void ServiceB::onEvent(EventType event) {
+void ServiceB::onEvent(Event event) {
   ESP_LOGI(TAG, "Received event %d", static_cast<int>(event));
   switch (event) {
-    case EventType::EVENT_BUTTON_PRESSED:
+    case Event::BUTTON_PRESSED:
       ESP_LOGI(TAG, "Button is pressed");
       break;
-    case EventType::EVENT_WIFI_CONNECTED:
+    case Event::WIFI_CONNECTED:
       ESP_LOGI(TAG, "WiFi is connected");
       break;
     default:

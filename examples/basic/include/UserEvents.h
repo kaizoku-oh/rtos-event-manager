@@ -1,11 +1,11 @@
 #ifndef USER_EVENTS_H
 #define USER_EVENTS_H
 
-enum class EventType {
-  EVENT_WIFI_CONNECTED = 0,
-  EVENT_WIFI_DISCONNECTED,
-  EVENT_BUTTON_PRESSED,
-  EVENT_TIME_AVAILABLE,
+enum class Event {
+  WIFI_CONNECTED = 0,
+  WIFI_DISCONNECTED,
+  BUTTON_PRESSED,
+  TIME_AVAILABLE,
   // Add other event types here
   MAX_EVENTS // Sentinel value for size of event list
 };

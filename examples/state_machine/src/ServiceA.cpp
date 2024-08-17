@@ -7,9 +7,9 @@
 #define TAG "[ServiceA]"
 
 // List of events
-const EventType ServiceA::events[] = {
-  EventType::EVENT_BUTTON_PRESSED,
-  EventType::EVENT_TIME_AVAILABLE,
+const Event ServiceA::events[] = {
+  Event::BUTTON_PRESSED,
+  Event::TIME_AVAILABLE,
 };
  
 // List of states
@@ -31,7 +31,7 @@ ServiceA::~ServiceA() {
   EventManager::getInstance().unsubscribe(this);
 }
 
-void ServiceA::onEvent(EventType event) {
+void ServiceA::onEvent(Event event) {
   ESP_LOGI(TAG, "Received event %d", static_cast<int>(event));
   // Save event to be used later inside the state handler functions
   this->stateMachine.event = event;
@@ -43,10 +43,10 @@ void ServiceA::state0EventHandler(void* machine) {
   state_machine_t* sm = static_cast<state_machine_t*>(machine);
 
   switch (sm->event) {
-    case EventType::EVENT_BUTTON_PRESSED:
+    case Event::BUTTON_PRESSED:
       ESP_LOGI(TAG, "Button is pressed");
       break;
-    case EventType::EVENT_TIME_AVAILABLE:
+    case Event::TIME_AVAILABLE:
       ESP_LOGI(TAG, "Time is available");
       break;
     default:
@@ -59,10 +59,10 @@ void ServiceA::state1EventHandler(void* machine) {
   state_machine_t* sm = static_cast<state_machine_t*>(machine);
 
   switch (sm->event) {
-    case EventType::EVENT_BUTTON_PRESSED:
+    case Event::BUTTON_PRESSED:
       ESP_LOGI(TAG, "Button is pressed");
       break;
-    case EventType::EVENT_TIME_AVAILABLE:
+    case Event::TIME_AVAILABLE:
       ESP_LOGI(TAG, "Time is available");
       break;
     default:

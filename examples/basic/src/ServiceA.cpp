@@ -6,9 +6,9 @@
 #define TAG "[ServiceA]"
 
 // List of events
-const EventType ServiceA::events[] = {
-  EventType::EVENT_BUTTON_PRESSED,
-  EventType::EVENT_TIME_AVAILABLE,
+const Event ServiceA::events[] = {
+  Event::BUTTON_PRESSED,
+  Event::TIME_AVAILABLE,
 };
 
 ServiceA::ServiceA() : Service("ServiceA", tskIDLE_PRIORITY + 1, 2048, 8) {
@@ -22,13 +22,13 @@ ServiceA::~ServiceA() {
   EventManager::getInstance().unsubscribe(this);
 }
 
-void ServiceA::onEvent(EventType event) {
+void ServiceA::onEvent(Event event) {
   ESP_LOGI(TAG, "Received event %d", static_cast<int>(event));
   switch (event) {
-    case EventType::EVENT_BUTTON_PRESSED:
+    case Event::BUTTON_PRESSED:
       ESP_LOGI(TAG, "Button is pressed");
       break;
-    case EventType::EVENT_WIFI_CONNECTED:
+    case Event::WIFI_CONNECTED:
       ESP_LOGI(TAG, "WiFi is connected");
       break;
     default:

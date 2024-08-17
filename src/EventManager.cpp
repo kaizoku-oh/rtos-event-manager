@@ -30,7 +30,7 @@ void EventManager::unlock() const {
   }
 }
 
-void EventManager::publish(EventType event) const {
+void EventManager::publish(Event event) const {
   uint8_t subscriptionIndex;
   uint8_t eventIndex;
 
@@ -51,7 +51,7 @@ void EventManager::publish(EventType event) const {
   this->unlock();
 }
 
-void EventManager::subscribe(Service* service, const EventType events[], uint8_t count) {
+void EventManager::subscribe(Service* service, const Event events[], uint8_t count) {
   bool alreadySubscribed = false;
   uint8_t subscriptionIndex;
 

@@ -8,9 +8,9 @@ public:
   ServiceA();
   ~ServiceA();
 protected:
-  void onEvent(EventType event) override;
+  void onEvent(Event event) override;
 private:
-  static const EventType events[static_cast<int>(EventType::MAX_EVENTS)];
+  static const Event events[static_cast<int>(Event::MAX_EVENTS)];
 };
 
 #endif // SERVICE_A_H

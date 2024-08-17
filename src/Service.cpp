@@ -16,12 +16,12 @@ Service::Service(const char* name, UBaseType_t priority, uint32_t stackSize, UBa
 }
 
 void Service::run() {
-  this->queueHandle = xQueueCreate(this->eventQueueSize, sizeof(EventType));
+  this->queueHandle = xQueueCreate(this->eventQueueSize, sizeof(Event));
   xTaskCreate(task, this->taskName, this->taskStackSize, this, this->taskPriority, &(this->taskHandle));
   ESP_LOGD(TAG, "%s is started", this->taskName);
 }
 
-void Service::notify(EventType event) {
+void Service::notify(Event event) {
   if (xPortInIsrContext()) {
     // Sending event from inside ISR context
     xQueueSendFromISR(this->queueHandle, &event, NULL);
@@ -37,7 +37,7 @@ const char* Service::getName(void) {
 
 void Service::task(void* params) {
   Service* self = static_cast<Service*>(params);
-  EventType event;
+  Event event;
 
   self->onStart();
   ESP_LOGD(TAG, "%s is waiting for an event...", self->taskName);

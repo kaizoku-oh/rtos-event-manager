@@ -17,8 +17,8 @@ constexpr uint8_t MAX_SUBSCRIPTIONS_COUNT = 10;
 class EventManager {
 public:
   static EventManager& getInstance();
-  void publish(EventType event) const;
-  void subscribe(Service* service, const EventType events[], uint8_t count);
+  void publish(Event event) const;
+  void subscribe(Service* service, const Event events[], uint8_t count);
   void unsubscribe(Service* service);
 
 private:
@@ -28,7 +28,7 @@ private:
 
   struct Subscription {
     Service* service;
-    const EventType* events;
+    const Event* events;
     uint8_t eventsCount;
   };
   Subscription subscriptions[MAX_SUBSCRIPTIONS_COUNT];
